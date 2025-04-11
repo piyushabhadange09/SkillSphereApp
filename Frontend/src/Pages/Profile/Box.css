@@ -1,40 +1,58 @@
 .box {
-  background-color: white;
-  color: #013e38;
-  padding: 10px;
+  background-color: #2c3332; /* Darker, bolder shade */
+  color: #ffffff;
+  padding: 20px;
   margin-bottom: 2rem;
-  border-radius: 5px;
-  box-shadow: 3px 3px 5px #5c9c94;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(63, 60, 60, 0.25);
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
   width: 100%;
 }
 
+.box:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+}
+
 .desc {
-  margin: 0.6rem;
-  margin-top: 1.5rem;
-  font-size: 1rem;
+  margin: 1rem 0 0.5rem;
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: #e0f8f5;
 }
 
 .details {
-  margin: 0.6rem;
   display: flex;
   justify-content: space-between;
+  align-items: center;
   margin-top: 1rem;
-  font-size: 1rem !important;
-  color: grey;
+  font-size: 0.95rem !important;
+  color: #b0c4c1;
+  flex-wrap: wrap;
 }
 
 .boxskill-boxes {
-  margin: 1rem;
+  margin: 1rem 0;
   display: flex;
   flex-wrap: wrap;
+  gap: 0.5rem;
 }
 
 .skill-box {
   text-align: center;
-  background-color: #809c5c;
-  color: white;
-  margin-right: 1rem;
-  border-radius: 5px;
-  min-width: 4rem;
-  font-size: 12px;
+  background-color: #658d3d; /* Bolder than #809c5c */
+  color: #ffffff;
+  padding: 6px 12px;
+  border-radius: 8px;
+  min-width: 5rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.skill-box:hover {
+  background-color: #547731;
+  cursor: default;
 }

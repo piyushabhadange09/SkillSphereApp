@@ -1,4 +1,4 @@
-:root {
+/* :root {
   --cyan: #3bb4a1;
   --light-grey: #6d6e70;
   --grey: #2d2d2d;
@@ -124,4 +124,47 @@ button.primary.ghost:hover {
     width: 50vw;
     height: 50vh;
   }
+} */
+
+.card-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--secfont);
+  background: linear-gradient(to bottom right, rgba(0, 0, 0, 0.85), rgba(40, 40, 40, 0.95));
+  border-radius: 25px;
+  border: 2px solid var(--yellow);
+  box-shadow:
+    0 0 25px rgba(255, 255, 0, 0.3),
+    0 12px 20px rgba(0, 0, 0, 0.6);
+  color: var(--yellow);
+  position: relative;
+  width: 320px;
+  min-width: 300px;
+  height: 480px;
+  max-width: 100%;
+  text-align: center;
+  margin: 3rem;
+  overflow: hidden;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.card-container:hover {
+  transform: translateY(-6px);
+  box-shadow:
+    0 0 35px rgba(255, 255, 0, 0.45),
+    0 18px 25px rgba(0, 0, 0, 0.7);
+}
+
+.card-container img {
+  border: 2px solid var(--yellow);
+  border-radius: 50%;
+  padding: 7px;
+  height: 100px;
+  width: 100px;
+  margin: 1rem;
+  background-color: #1a1a1a;
 }

@@ -12,21 +12,44 @@
 }
 
 .profile-container {
+  position: relative;
   font-family: "Montserrat", sans-serif;
   color: white;
-  padding: 20px;
-  background-color: #2d2d2d;
+  padding: 30px;
+  background-image: url("/assets/images/dash.png"); /* <-- Update with actual path */
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+  z-index: 0;
+  min-height: 100vh;
+  box-shadow: inset 0 0 50px rgba(0, 0, 0, 0.6);
+  border-radius: 10px;
+}
+
+.profile-container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: -1;
 }
 
 .profile-photo img {
   width: 150px;
   height: 150px;
   border-radius: 50%;
+  border: 3px solid white;
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
 }
 
 .profile-name {
-  font-size: 2rem !important;
+  font-size: 2.2rem !important;
   margin-top: 10px;
+  font-weight: bold;
+  color: #8adfd1;
 }
 
 .rating {
@@ -35,27 +58,34 @@
 
 .rating-stars {
   font-size: 24px;
+  color: gold;
 }
 
 .rating-value {
   margin-left: 5px;
+  font-weight: bold;
 }
 
 .buttons {
   margin-top: 10px;
 }
 
-.connect-button {
-  padding: 10px 20px;
-  margin-top: 1rem;
-  margin-bottom: 3rem;
-  margin-left: 2rem;
+.connect-button,
+.report-button,
+.edit-button {
+  padding: 12px 24px;
+  margin: 1rem 1rem 2rem 0;
   border: none;
-  border-radius: 5px;
-  background-color: #3bb4a1;
-  color: white;
+  border-radius: 8px;
+  font-weight: 600;
   cursor: pointer;
   transition: 0.3s ease-in-out;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.connect-button {
+  background-color: #3bb4a1;
+  color: white;
 }
 
 .connect-button:hover {
@@ -64,16 +94,8 @@
 }
 
 .report-button {
-  padding: 10px 20px;
-  margin-top: 1rem;
-  margin-bottom: 3rem;
-  margin-left: 2rem;
-  border: none;
-  border-radius: 5px;
   background-color: #f56664;
   color: white;
-  cursor: pointer;
-  transition: background-color 0.3s ease-in-out;
 }
 
 .report-button:hover {
@@ -85,16 +107,10 @@
   margin-top: 1rem;
   flex-direction: column;
 }
+
 .edit-button {
-  padding: 10px 20px;
-  margin-top: 1rem;
-  margin-bottom: 1rem;
-  border: none;
-  border-radius: 5px;
   background-color: #013e38;
   color: white;
-  cursor: pointer;
-  transition: 0.3s ease-in-out;
 }
 
 .edit-button:hover {
@@ -104,19 +120,23 @@
 
 h2 {
   color: #8adfd1 !important;
+  font-size: 1.7rem;
+  margin-bottom: 0.8rem;
 }
 
 .bio {
   margin-bottom: 3rem;
-  font-size: 1.1rem;
+  font-size: 1.2rem;
+  line-height: 1.6;
+  max-width: 700px;
 }
 
 .portfolio-links {
-  margin-top: 1rem;
+  margin: 1.5rem 0 3rem;
   display: flex;
-  margin-bottom: 3rem;
   min-width: 15rem;
-  justify-content: space-between;
+  gap: 1.5rem;
+  flex-wrap: wrap;
 }
 
 .link {
@@ -126,6 +146,7 @@ h2 {
 .portfolio-link {
   opacity: 0.7;
   transition: opacity 0.3s ease-in-out;
+  filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.6));
 }
 
 .portfolio-link:hover {
@@ -137,50 +158,42 @@ h2 {
   flex-wrap: wrap;
   margin-top: 1rem;
   margin-bottom: 4rem;
+  gap: 10px;
 }
 
 .skill-box {
   background-color: #9c955c;
   color: white;
-  padding: 5px 10px;
-  margin-right: 10px;
-  margin-bottom: 10px;
-  border-radius: 5px;
+  padding: 8px 14px;
+  font-weight: 600;
+  border-radius: 6px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
 }
 
-.education-boxes {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: 1rem;
-  margin-bottom: 3rem;
-}
-
+.education-boxes,
 .project-boxes {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 1rem;
-  margin-bottom: 4rem;
+  margin: 2rem 0 4rem;
+  gap: 1rem;
+  width: 100%;
 }
 
 @media (max-width: 768px) {
   .left-div {
-    display: flex;
     flex-direction: column;
   }
 
   .edit-button {
-    display: flex;
     align-self: center;
     margin-right: 0px !important;
   }
 
   .profile-box,
   .profile-photo {
-    display: flex;
-    align-items: center;
     justify-content: center;
+    align-items: center;
   }
 
   .connect-button,
@@ -188,9 +201,10 @@ h2 {
   .profile-name {
     margin-left: 0px !important;
   }
+
   .report-button,
   .connect-button {
-    padding: 5px 10px;
+    padding: 8px 16px;
   }
 
   .misc {
@@ -198,6 +212,19 @@ h2 {
     margin: auto;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
+  }
+
+  .bio {
+    text-align: center;
+    padding: 0 1rem;
+  }
+
+  .portfolio-links {
+    justify-content: center;
+  }
+
+  .skill-boxes {
     justify-content: center;
   }
 }
