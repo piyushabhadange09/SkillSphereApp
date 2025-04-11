@@ -4,143 +4,202 @@ const LandingPage = () => {
   const [scrollPosition, setScrollPosition] = useState(0);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setScrollPosition(window.scrollY);
-    };
-
+    const handleScroll = () => setScrollPosition(window.scrollY);
     window.addEventListener("scroll", handleScroll);
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const containerStyle = {
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-    backgroundColor: "#2D2D2D",
+  const COLORS = {
+    primary: "#3BB4A1",
+    background: "#2D2D2D",
+    white: "#FFFFFF",
+    dark: "#1A3C40",
   };
 
-  const titleContainerStyle = {
-    display: "flex",
-    backgroundColor: "#2D2D2D",
-    padding: "20px",
-    margin: "100px",
-    marginTop: "300px",
-    justifyContent: "center",
-    alignItems: "center",
-    border: "10px solid #3BB4A1",
+  const styles = {
+    container: {
+      backgroundColor: COLORS.background,
+      display: "flex",
+      flexDirection: "column",
+      alignItems: "center",
+      paddingBottom: "100px",
+    },
+    hero: {
+      position: "relative",
+      marginTop: "200px",
+      marginBottom: "100px",
+      textAlign: "center",
+    },
+    heroTitleContainer: {
+      border: `8px solid ${COLORS.primary}`,
+      padding: "30px 50px",
+      backgroundColor: COLORS.dark,
+      zIndex: 1,
+      position: "relative",
+    },
+    heroTitle: {
+      fontSize: "5rem",
+      fontFamily: "Josefin Sans, sans-serif",
+      color: COLORS.primary,
+      fontWeight: "bold",
+      letterSpacing: "3px",
+      textShadow: "2px 2px 10px rgba(0, 0, 0, 0.5)",
+    },
+    heroImageTop: {
+      position: "absolute",
+      left: `${scrollPosition}px`,
+      top: "-150px",
+      width: "350px",
+      zIndex: 0,
+      transition: "left 0.3s ease",
+    },
+    heroImageBottom: {
+      position: "absolute",
+      right: `${scrollPosition}px`,
+      bottom: "-150px",
+      width: "350px",
+      zIndex: 0,
+      transition: "right 0.3s ease",
+    },
+    sectionTitle: {
+      color: COLORS.background,
+      backgroundColor: COLORS.primary,
+      fontFamily: "Oswald",
+      fontSize: "3rem",
+      fontWeight: "700",
+      padding: "20px 40px",
+      borderRadius: "12px",
+      marginTop: "100px",
+      textAlign: "center",
+      textShadow: "1px 1px 5px rgba(0,0,0,0.5)",
+    },
+    featuresGrid: {
+      display: "grid",
+      gridTemplateColumns: "repeat(3, 1fr)",
+      gap: "30px",
+      marginTop: "60px",
+      padding: "0 40px",
+      width: "100%",
+      justifyItems: "center",
+    },
+    secondRowGrid: {
+      display: "grid",
+      gridTemplateColumns: "repeat(2, 1fr)",
+      gap: "30px",
+      marginTop: "30px",
+      padding: "0 150px",
+      width: "100%",
+      justifyItems: "center",
+    },
+    featureBox: {
+      borderRadius: "16px",
+      padding: "25px 30px",
+      width: "280px",
+      boxShadow: "0 6px 16px rgba(0, 0, 0, 0.4)",
+      textAlign: "left",
+      transition: "all 0.3s ease-in-out",
+      cursor: "default",
+      transform: "scale(1)",
+    },
+    featureBoxHover: {
+      transform: "scale(1.05)",
+      boxShadow: "0 12px 24px rgba(0, 0, 0, 0.5)",
+    },
+    featureTitle: {
+      fontSize: "1.4rem",
+      fontWeight: "700",
+      marginBottom: "10px",
+      textShadow: "1px 1px 5px rgba(0,0,0,0.3)",
+    },
+    featureText: {
+      fontSize: "1rem",
+      lineHeight: "1.6",
+      textShadow: "1px 1px 4px rgba(0,0,0,0.2)",
+    },
   };
 
-  const titleStyle = {
-    fontFamily: "Josefin Sans, sans-serif",
-    color: "#3BB4A1",
-    fontWeight: 700,
-    fontSize: "5.5rem",
-    textAlign: "center",
-  };
-
-  const contentTitleStyle = {
-    textAlign: "center",
-    color: "#2d2d2d",
-    fontFamily: "Oswald",
-    backgroundColor: "#3BB4A1",
-    width: "100%",
-    fontSize: "4rem",
-    fontWeight: 700,
-    marginTop: "300px",
-  };
-
-  const descriptionStyle = {
-    fontFamily: "Montserrat, sans-serif",
-    fontSize: "1.2rem",
-    textAlign: "center",
-    color: "white",
-    maxWidth: "1000px",
-    margin: "60px",
-  };
-
-  const buttonStyle = {
-    backgroundColor: "#3BB4A1",
-    color: "white",
-    border: "none",
-    padding: "12px 24px",
-    fontSize: "1rem",
-    cursor: "pointer",
-    transition: "background-color 0.3s ease",
-  };
-
-  const imageStyle = {
-    position: "absolute",
-    left: `${scrollPosition}px`,
-    width: "400px",
-    justifyContent: "center",
-  };
-
-  const imageBelowStyle = {
-    position: "absolute",
-    right: `${scrollPosition}px`,
-    width: "400px",
-    justifyContent: "center",
-  };
-
-  const textContainer = {
-    textAlign: "center",
-    alignItems: "center",
-    marginBottom: "40px",
-  };
-
-  const handleButtonClick = () => {
-    // Handle button click event
-    console.log("Button clicked!");
+  const FeatureCard = ({ title, text, bgColor, textColor }) => {
+    const [hovered, setHovered] = useState(false);
+    return (
+      <div
+        style={{
+          ...styles.featureBox,
+          ...(hovered ? styles.featureBoxHover : {}),
+          backgroundColor: bgColor,
+          color: textColor,
+        }}
+        onMouseEnter={() => setHovered(true)}
+        onMouseLeave={() => setHovered(false)}
+      >
+        <p style={{ ...styles.featureTitle, color: textColor }}>{title}</p>
+        <p style={{ ...styles.featureText, color: textColor }}>{text}</p>
+      </div>
+    );
   };
 
   return (
-    <div style={containerStyle}>
-      <div style={containerStyle}>
-        <div>
-          <img src={"/assets/images/1.png"} alt="Above Image" style={imageStyle} />
-          <div style={titleContainerStyle}>
-            <h1 style={titleStyle}>SKILL SPHERE</h1>
-          </div>
-          <img src={"/assets/images/2.png"} alt="Below Image" style={imageBelowStyle} />
+    <div style={styles.container}>
+      {/* <div style={styles.hero}>
+        <img src="/assets/images/1.png" alt="Top Image" style={styles.heroImageTop} />
+        <div style={styles.heroTitleContainer}>
+          <h1 style={styles.heroTitle}>SKILL SPHERE</h1>
         </div>
+        <img src="/assets/images/2.png" alt="Bottom Image" style={styles.heroImageBottom} />
+      </div> */}
+      <div style={styles.hero}>
+  <div style={styles.heroBackground}></div>
+
+  <div style={styles.heroTitleContainer}>
+    <div style={styles.heroTitleRow}>
+      <img
+        src="/assets/images/image.png"
+        alt="Logo"
+        style={styles.heroLogo}
+      />
+      <h1 style={styles.heroGradientText}>SKILL SPHERE</h1>
+    </div>
+  </div>
+
+  <img src="/assets/images/1.png" alt="Top Image" style={styles.heroImageTop} />
+  <img src="/assets/images/2.png" alt="Bottom Image" style={styles.heroImageBottom} />
+</div>
+
+      <h2 style={styles.sectionTitle}>WHY SKILL SPHERE?</h2>
+
+      <div style={styles.featuresGrid}>
+        <FeatureCard
+          title="➊ Learn From Experts"
+          text="Gain insights and practical knowledge from experienced mentors across diverse fields—be it programming, cooking, or digital marketing."
+          bgColor="#3BB4A1"
+          textColor="#FFFFFF"
+        />
+        <FeatureCard
+          title="➋ Share Your Expertise"
+          text="Passionate about something? Become a mentor and empower others. It’s a platform for growth and giving back."
+          bgColor="#FF6B6B"
+          textColor="#FFFFFF"
+        />
+        <FeatureCard
+          title="➌ Collaborative Environment"
+          text="Join hands with like-minded learners in group projects, discussions, and more. Skill Sphere promotes a community-first mindset."
+          bgColor="#FFD93D"
+          textColor="#333333"
+        />
       </div>
-      <h2 style={contentTitleStyle}>WHY SKILL SPHERE?</h2>
-      <div id="why-skill-swap" style={textContainer}>
-        <div style={descriptionStyle}>
-          At Skill Swap, we believe in the power of mutual learning and collaboration. Here's why Skill Swap is the
-          ultimate platform for skill acquisition and knowledge exchange:
-          <br />
-          <br />
-          <br />
-          <h4 style={{ color: "#028477" }}>➊ Learn From Experts:</h4> Gain insights and practical knowledge directly
-          from experienced mentors who excel in their respective fields. Whether it's mastering a new programming
-          language, honing your culinary skills, or delving into the world of digital marketing, our mentors are here to
-          guide you every step of the way.
-          <br />
-          <br />
-          <h4 style={{ color: "#028477" }}>➋ Share Your Expertise:</h4> Have a skill or passion you're eager to share?
-          Skill Swap provides a platform for you to become a mentor yourself. Share your expertise with others, foster a
-          sense of community, and contribute to the growth of aspiring learners.
-          <br />
-          <br />
-          <h4 style={{ color: "#028477" }}>➌ Collaborative Environment:</h4> Our community thrives on collaboration.
-          Connect with like-minded individuals, participate in group projects, and engage in discussions that fuel
-          creativity and innovation. Skill Swap isn't just about individual growth—it's about collective advancement.
-          <br />
-          <br />
-          <h4 style={{ color: "#028477" }}>➍ Diverse Learning Opportunities:</h4> With Skill Swap, the possibilities are
-          endless and <b>free of cost</b>. Explore a wide range of topics and disciplines, from traditional crafts to
-          cutting-edge technologies. Our diverse library of skills ensures there's something for everyone, regardless of
-          your interests or background.
-          <br />
-          <br />
-          <h4 style={{ color: "#028477" }}>➎ Continuous Growth:</h4> Learning is a lifelong journey, and Skill Swap is
-          here to support you every step of the way. Whether you're a novice or a seasoned professional, our platform
-          empowers you to continuously expand your knowledge, challenge yourself, and embrace new opportunities.
-        </div>
+
+      <div style={styles.secondRowGrid}>
+        <FeatureCard
+          title="➍ Diverse Learning Opportunities"
+          text="Learn skills for free—from traditional crafts to the latest tech trends. There's something for everyone, regardless of background."
+          bgColor="#6C5CE7"
+          textColor="#FFFFFF"
+        />
+        <FeatureCard
+          title="➎ Continuous Growth"
+          text="Stay curious and keep evolving. Whether you’re just starting out or a pro, Skill Sphere helps you grow at every step."
+          bgColor="#00B894"
+          textColor="#FFFFFF"
+        />
       </div>
     </div>
   );
