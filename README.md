@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # SkillSwap
 
 SkillSwap is a MERN stack web platform designed to facilitate collaborative learning and skill development through peer-to-peer guidance. The platform emphasizes reciprocal knowledge exchange, industrial-grade security features, and user-friendly interfaces to create a dynamic learning environment.
@@ -148,3 +149,7 @@ sudo docker-compose down --rmi all
 ```
 
 Now you can run the website on `http://localhost:5173`
+=======
+# SkillSphereApp
+ SkillSphere is a peer-to-peer skill exchange platform for students, enabling informal, flexible learning. It features verified profiles, ratings, rewards (badges, tokens), secure transactions, and group collaboration tools—fostering trust, motivation, and a strong learning community.
+>>>>>>> 23fff220d1c19f232e3b29b1363069c253dc2e92
