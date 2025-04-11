@@ -5,7 +5,6 @@ import { User } from "../models/user.model.js";
 import { Request } from "../models/request.model.js";
 import { UnRegisteredUser } from "../models/unRegisteredUser.model.js";
 import { generateJWTToken_username } from "../utils/generateJWTToken.js";
-import { uploadOnCloudinary } from "../config/connectCloudinary.js";
 import { sendMail } from "../utils/SendMail.js";
 
 export const userDetailsWithoutID = asyncHandler(async (req, res) => {

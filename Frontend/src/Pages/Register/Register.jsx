@@ -218,38 +218,51 @@ const Register = () => {
   };
 
   const validateRegForm = () => {
+    // Trim all links to avoid issues with accidental spaces
+    const trimmedGithub = form.githubLink?.trim();
+    const trimmedLinkedIn = form.linkedinLink?.trim();
+    const trimmedPortfolio = form.portfolioLink?.trim();
+  
     if (!form.username) {
       toast.error("Username is empty");
       return false;
     }
+  
     if (!form.skillsProficientAt.length) {
-      toast.error("Enter atleast one Skill you are proficient at");
+      toast.error("Enter at least one skill you are proficient at");
       return false;
     }
+  
     if (!form.skillsToLearn.length) {
-      toast.error("Enter atleast one Skill you want to learn");
+      toast.error("Enter at least one skill you want to learn");
       return false;
     }
-    if (!form.portfolioLink && !form.githubLink && !form.linkedinLink) {
-      toast.error("Enter atleast one link among portfolio, github and linkedin");
+  
+    if (!trimmedPortfolio && !trimmedGithub && !trimmedLinkedIn) {
+      toast.error("Enter at least one link among portfolio, GitHub, and LinkedIn");
       return false;
     }
-    const githubRegex = /^(?:http(?:s)?:\/\/)?(?:www\.)?github\.com\/[a-zA-Z0-9_-]+(?:\/)?$/;
-    if (form.githubLink && githubRegex.test(form.githubLink) === false) {
-      toast.error("Enter a valid github link");
+  
+    const githubRegex = /^(https?:\/\/)?(www\.)?github\.com\/[a-zA-Z0-9_-]+\/?$/;
+    if (trimmedGithub && !githubRegex.test(trimmedGithub)) {
+      toast.error("Enter a valid GitHub link");
       return false;
     }
-    const linkedinRegex = /^(?:http(?:s)?:\/\/)?(?:www\.)?linkedin\.com\/in\/[a-zA-Z0-9_-]+(?:\/)?$/;
-    if (form.linkedinLink && linkedinRegex.test(form.linkedinLink) === false) {
-      toast.error("Enter a valid linkedin link");
+  
+    const linkedinRegex = /^https?:\/\/(www\.)?linkedin\.com\/in\/[a-zA-Z0-9_.-]+\/?$/;
+    if (trimmedLinkedIn && !linkedinRegex.test(trimmedLinkedIn)) {
+      toast.error("Enter a valid LinkedIn link");
       return false;
     }
-    if (form.portfolioLink && form.portfolioLink.includes("http") === false) {
+  
+    if (trimmedPortfolio && !trimmedPortfolio.startsWith("http")) {
       toast.error("Enter a valid portfolio link");
       return false;
     }
+  
     return true;
   };
+  
   const validateEduForm = () => {
     form.education.forEach((edu, index) => {
       if (!edu.institution) {
