@@ -1,104 +1,94 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Button from "react-bootstrap/Button";
 import { FaGoogle } from "react-icons/fa";
 
 const Login = () => {
-  const [isHovered, setIsHovered] = useState(false); // State for hover effect
+  const [isHovered, setIsHovered] = useState(false);
+  const [isActive, setIsActive] = useState(false);
+
+  useEffect(() => {
+    // Trigger animation on mount
+    setTimeout(() => setIsActive(true), 100);
+  }, []);
 
   const handleGoogleLogin = () => {
     window.location.href = "http://localhost:8000/auth/google";
   };
 
   const containerStyle = {
-    // height: "90.4vh",
-    minHeight: "90.4vh",
-    // height: "100%",
+    position: "relative",
+    height: "100vh",
+    width: "100%",
+    backgroundColor: "#1a1a1a", // Prevent white flash
+    backgroundImage: "url('/assets/images/login.png')",
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+    backgroundRepeat: "no-repeat",
     display: "flex",
-    flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "#2d2d2d",
+    overflow: "hidden",
+  };
+
+  const overlayStyle = {
+    position: "absolute",
+    top: 0,
+    left: 0,
+    height: "100%",
+    width: "100%",
+    background: "rgba(0, 0, 0, 0.65)",
+    zIndex: 1,
   };
 
   const loginBoxStyle = {
-    height: "200px",
-    display: "flex",
-    backgroundColor: "#2d2d2d",
-    flexDirection: "column",
-    justifyContent: "space-between",
-    padding: "20px",
-    border: "1px solid #fcaaa8", // Border color
-    borderRadius: "10px",
-    boxShadow: "10px 10px 10px #5c4242",
-    zIndex: "999",
+    position: "relative",
+    zIndex: 2,
+    padding: "40px 60px",
+    background: "rgba(255, 255, 255, 0.07)",
+    borderRadius: "15px",
+    border: "1px solid rgba(255, 255, 255, 0.2)",
+    backdropFilter: "blur(10px)",
+    boxShadow: "0 10px 25px rgba(0, 0, 0, 0.5)",
+    textAlign: "center",
+    transform: isActive ? "translateY(0)" : "translateY(50px)",
+    opacity: isActive ? 1 : 0,
+    transition: "all 1s ease-in-out",
   };
 
   const titleStyle = {
-    fontSize: "50px",
-    fontFamily: "Oswald, sans-serif", // Font family
-    color: "#fcaaa8", // Text color
-    textAlign: "center",
-  };
-
-  const buttonContainerStyle = {
-    display: "flex",
-    justifyContent: "center",
+    fontFamily: "Oswald, sans-serif",
+    fontSize: "48px",
+    color: "#ffe46b",
+    marginBottom: "30px",
+    textShadow: "2px 2px 5px rgba(0, 0, 0, 0.5)",
   };
 
   const buttonStyle = {
-    backgroundColor: "#f56664", // Button background color
-    color: "#fff", // Button text color
-    fontFamily: "Montserrat",
+    backgroundColor: isHovered ? "#fff" : "#f56664",
+    color: isHovered ? "#f56664" : "#fff",
+    fontFamily: "Montserrat, sans-serif",
     border: "none",
-    padding: "10px 20px",
+    padding: "12px 25px",
     borderRadius: "5px",
     cursor: "pointer",
-  };
-
-  const hoverButtonStyle = {
-    backgroundColor: "#fff", // Button background color on hover
-    color: "#f56664", // Button text color on hover
-    fontFamily: "Montserrat",
-    border: "none",
-    padding: "10px 20px",
-    borderRadius: "5px",
-    cursor: "pointer",
-    transition: "background-color 0.5s ease-in-out", // Transition effect
-  };
-
-  const imageStyle = {
-    position: "absolute",
-    left: "10px", // Position the above image to the left
-    top: "80px", // Add some space from the top
-    width: "400px",
-    marginBottom: "20px", // Add margin bottom to create space between image and login box
-  };
-
-  const imageBelowStyle = {
-    position: "absolute",
-    right: "10px", // Position the below image to the right
-    bottom: "50px", // Add some space from the bottom
-    width: "400px",
-    marginBottom: "20px", // Add margin bottom to create space between image and login box
+    fontSize: "16px",
+    transition: "all 0.3s ease",
   };
 
   return (
     <div style={containerStyle}>
-      <img src={"/assets/images/1.png"} alt="Above Image" style={imageStyle} />
+      <div style={overlayStyle} />
       <div style={loginBoxStyle}>
         <h1 style={titleStyle}>LOGIN</h1>
-        <div style={buttonContainerStyle}>
-          <Button
-            style={isHovered ? hoverButtonStyle : buttonStyle} // Apply style based on hover state
-            onMouseEnter={() => setIsHovered(true)} // Set hover state to true on mouse enter
-            onMouseLeave={() => setIsHovered(false)} // Set hover state to false on mouse leave
-            onClick={handleGoogleLogin}
-          >
-            <FaGoogle /> Login with Google
-          </Button>
-        </div>
+        <Button
+          style={buttonStyle}
+          onMouseEnter={() => setIsHovered(true)}
+          onMouseLeave={() => setIsHovered(false)}
+          onClick={handleGoogleLogin}
+        >
+          <FaGoogle /> Login with Google
+        </Button>
       </div>
-      <img src={"/assets/images/2.png"} alt="Below Image" style={imageBelowStyle} />
     </div>
   );
 };

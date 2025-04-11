@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import "./LandingPage.css"; // Include external CSS for keyframes
 
 const LandingPage = () => {
   const [scrollPosition, setScrollPosition] = useState(0);
@@ -26,24 +27,50 @@ const LandingPage = () => {
     },
     hero: {
       position: "relative",
-      marginTop: "200px",
-      marginBottom: "100px",
+      height: "100vh",
+      width: "100%",
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
       textAlign: "center",
+      overflow: "hidden",
+    },
+    heroBackground: {
+      backgroundImage: "url('/assets/images/bg2.png')",
+      backgroundSize: "cover",
+      backgroundPosition: "center",
+      opacity: 0.5,
+      position: "absolute",
+      top: 0,
+      left: 0,
+      width: "100%",
+      height: "100%",
+      zIndex: 0,
+      animation: "fadeScale 2s ease-in-out forwards",
     },
     heroTitleContainer: {
       border: `8px solid ${COLORS.primary}`,
       padding: "30px 50px",
       backgroundColor: COLORS.dark,
       zIndex: 1,
-      position: "relative",
     },
-    heroTitle: {
+    heroTitleRow: {
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      gap: "20px",
+    },
+    heroLogo: {
+      width: "70px",
+      height: "70px",
+    },
+    heroGradientText: {
       fontSize: "5rem",
       fontFamily: "Josefin Sans, sans-serif",
-      color: COLORS.primary,
       fontWeight: "bold",
-      letterSpacing: "3px",
+      color: COLORS.primary,
       textShadow: "2px 2px 10px rgba(0, 0, 0, 0.5)",
+      letterSpacing: "3px",
     },
     heroImageTop: {
       position: "absolute",
@@ -139,30 +166,19 @@ const LandingPage = () => {
 
   return (
     <div style={styles.container}>
-      {/* <div style={styles.hero}>
-        <img src="/assets/images/1.png" alt="Top Image" style={styles.heroImageTop} />
-        <div style={styles.heroTitleContainer}>
-          <h1 style={styles.heroTitle}>SKILL SPHERE</h1>
-        </div>
-        <img src="/assets/images/2.png" alt="Bottom Image" style={styles.heroImageBottom} />
-      </div> */}
       <div style={styles.hero}>
-  <div style={styles.heroBackground}></div>
+        <div className="animated-bg" style={styles.heroBackground}></div>
 
-  <div style={styles.heroTitleContainer}>
-    <div style={styles.heroTitleRow}>
-      <img
-        src="/assets/images/image.png"
-        alt="Logo"
-        style={styles.heroLogo}
-      />
-      <h1 style={styles.heroGradientText}>SKILL SPHERE</h1>
-    </div>
-  </div>
+        <div style={styles.heroTitleContainer}>
+          <div style={styles.heroTitleRow}>
+            
+            <h1 style={styles.heroGradientText}>SKILL SPHERE</h1>
+          </div>
+        </div>
 
-  <img src="/assets/images/1.png" alt="Top Image" style={styles.heroImageTop} />
-  <img src="/assets/images/2.png" alt="Bottom Image" style={styles.heroImageBottom} />
-</div>
+        <img src="/assets/images/1.png" alt="Top Image" style={styles.heroImageTop} />
+        <img src="/assets/images/2.png" alt="Bottom Image" style={styles.heroImageBottom} />
+      </div>
 
       <h2 style={styles.sectionTitle}>WHY SKILL SPHERE?</h2>
 
