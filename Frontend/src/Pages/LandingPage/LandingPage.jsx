@@ -102,12 +102,12 @@ const LandingPage = () => {
         <div>
           <img src={"/assets/images/1.png"} alt="Above Image" style={imageStyle} />
           <div style={titleContainerStyle}>
-            <h1 style={titleStyle}>SKILL SWAP</h1>
+            <h1 style={titleStyle}>SKILL SPHERE</h1>
           </div>
           <img src={"/assets/images/2.png"} alt="Below Image" style={imageBelowStyle} />
         </div>
       </div>
-      <h2 style={contentTitleStyle}>WHY SKILL SWAP?</h2>
+      <h2 style={contentTitleStyle}>WHY SKILL SPHERE?</h2>
       <div id="why-skill-swap" style={textContainer}>
         <div style={descriptionStyle}>
           At Skill Swap, we believe in the power of mutual learning and collaboration. Here's why Skill Swap is the

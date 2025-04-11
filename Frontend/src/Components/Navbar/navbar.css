@@ -1,0 +1,130 @@
+/* Font Imports */
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@500&family=Montserrat:wght@400;600&display=swap");
+
+/* General Navbar */
+.navbar {
+  background-color: #3bb4a1 !important;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  font-family: "Montserrat", sans-serif;
+  padding: 0.6rem 1.2rem;
+  z-index: 998;
+}
+
+/* Brand Styling */
+.navbar-brand {
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 1.9rem;
+  font-weight: 600;
+  color: #2d2d2d !important;
+  letter-spacing: 1px;
+  transition: color 0.3s ease;
+}
+
+.navbar-brand:hover {
+  color: #f56664 !important;
+}
+
+/* Nav Links */
+.nav-link {
+  color: #2d2d2d !important;
+  font-weight: 500;
+  padding: 0.6rem 1rem;
+  transition:
+    color 0.3s ease,
+    background-color 0.3s ease;
+}
+
+.nav-link:hover,
+.nav-link:focus {
+  color: #f56664 !important;
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 6px;
+}
+
+/* Offcanvas Header */
+.offcanvas-header {
+  background-color: #e9f7f5;
+  border-bottom: 1px solid #c7e6df;
+}
+
+.offcanvas-title {
+  font-family: "Josefin Sans", sans-serif;
+  color: #028477;
+  font-weight: 600;
+}
+
+/* Offcanvas Nav Links */
+.offcanvas .nav-link {
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  margin: 0.25rem 0;
+}
+
+.offcanvas .nav-link:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+/* Discover Section Links (Mobile) */
+.discover-highlight {
+  font-size: 1.2rem;
+  margin-top: 2rem;
+  color: #f56664 !important;
+  font-weight: 600;
+}
+
+.discover-sub {
+  font-size: 1.1rem;
+  margin-left: 1.5rem;
+  color: #013e38 !important;
+}
+
+/* Avatar Dropdown */
+.dropdown-toggle {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  display: flex !important;
+  align-items: center;
+  padding: 0;
+}
+
+.dropdown-menu {
+  border-radius: 12px;
+  border: none;
+  min-width: 150px;
+  padding: 0.5rem 0;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  animation: fadeIn 0.2s ease-in-out;
+}
+
+.dropdown-item {
+  padding: 10px 20px;
+  font-weight: 500;
+  transition: background-color 0.3s ease;
+}
+
+.dropdown-item:hover {
+  background-color: #e6faf7;
+  color: #028477;
+}
+
+/* Avatar Image */
+.user-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-right: 10px;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

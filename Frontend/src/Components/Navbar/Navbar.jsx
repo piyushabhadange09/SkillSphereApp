@@ -9,6 +9,7 @@ import { Dropdown } from "react-bootstrap";
 import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+// import './navbar.css';
 
 const UserProfileDropdown = () => {
   const { user, setUser } = useUser();
@@ -125,7 +126,7 @@ const Header = () => {
       <Navbar key="md" expand="md" className="bg-body-primary" style={{ backgroundColor: "#3BB4A1", zIndex: 998 }}>
         <Container fluid>
           <Navbar.Brand href="/" style={{ fontFamily: "Josefin Sans, sans-serif", color: "#2d2d2d", fontWeight: 500 }}>
-            SKILL SWAP
+            SKILL SPHERE
           </Navbar.Brand>
           <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-md`} />
           <Navbar.Offcanvas
@@ -138,7 +139,7 @@ const Header = () => {
                 id={`offcanvasNavbarLabel-expand-md`}
                 style={{ fontFamily: "Josefin Sans, sans-serif", color: "#028477" }}
               >
-                SKILL SWAP
+                SKILL SPHERE
               </Offcanvas.Title>
             </Offcanvas.Header>
             <Offcanvas.Body>
@@ -221,7 +222,7 @@ const Header = () => {
                       to="/#why-skill-swap"
                       style={{ fontFamily: "Montserrat, sans-serif", color: "#2d2d2d" }}
                     >
-                      Why SkillSwap
+                      Why SkillSphere
                     </Nav.Link>
                     <Nav.Link as={Link} to="/login" style={{ fontFamily: "Montserrat, sans-serif", color: "#2d2d2d" }}>
                       Login/Register
@@ -238,3 +239,4 @@ const Header = () => {
 };
 
 export default Header;
+
