@@ -1,0 +1,93 @@
+.custom-footer {
+  background-color: #2d8f80;
+  color: white;
+  padding: 40px 0 20px;
+  font-family: "Montserrat", sans-serif;
+}
+
+.footer-title {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 15px;
+  color: #ffffff;
+}
+
+.footer-description {
+  font-size: 14px;
+  line-height: 1.6;
+  color: #e3f6f3;
+}
+
+.footer-links {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-links li {
+  margin-bottom: 8px;
+}
+
+.footer-links a {
+  text-decoration: none;
+  color: #e3f6f3;
+  transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+  color: #ffffff;
+  text-decoration: underline;
+}
+
+.social-icons {
+  display: flex;
+  gap: 10px;
+  justify-content: start;
+  margin-top: 10px;
+}
+
+.social-btn {
+  background-color: white;
+  color: #2d8f80;
+  padding: 10px;
+  border-radius: 50%;
+  font-size: 16px;
+  transition: all 0.3s ease-in-out;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.social-btn:hover {
+  transform: scale(1.15);
+  color: white;
+}
+
+.social-btn.facebook:hover {
+  background-color: #3b5998;
+}
+
+.social-btn.twitter:hover {
+  background-color: #00acee;
+}
+
+.social-btn.instagram:hover {
+  background: radial-gradient(circle at 30% 30%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285aeb 90%);
+}
+
+.social-btn.linkedin:hover {
+  background-color: #0e76a8;
+}
+
+.social-btn.github:hover {
+  background-color: #333;
+}
+
+.footer-text {
+  font-size: 14px;
+  margin-top: 20px;
+}
+
+.brand {
+  font-weight: bold;
+  color: #ffffff;
+}
