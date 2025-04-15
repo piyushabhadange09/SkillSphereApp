@@ -43,7 +43,7 @@ JWT_SECRET=<Your JWT Secret Key>
 
 *Google OAuth Credentials
 
-GOOGLE_CLIENT_ID=<Your Google Client ID>
+GOOGLE_CLIENT_ID= <Your Google Client ID>
 
 GOOGLE_CLIENT_SECRET=<Your Google Client Secret>
 
