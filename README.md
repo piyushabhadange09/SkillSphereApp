@@ -41,9 +41,12 @@ PORT=5000
 MONGODB_URI=mongodb://localhost:27017/skillsphere
 JWT_SECRET=<Your JWT Secret Key>
 
-#Google OAuth Credentials
+*Google OAuth Credentials
+
 GOOGLE_CLIENT_ID=<Your Google Client ID>
+
 GOOGLE_CLIENT_SECRET=<Your Google Client Secret>
+
 GOOGLE_CALLBACK_URL=http://localhost:8000/auth/google/callback
 
 🛢️ Start the MongoDB server (if not already running):
@@ -56,7 +59,7 @@ Edit
 
 ✅ Backend server runs on: http://localhost:8000
 
-💻 #3.3 Frontend Setup
+# 💻3.3 Frontend Setup
 
 1.Open a new terminal window/tab.
 
