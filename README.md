@@ -1,8 +1,8 @@
-🌐 SkillSphere
+# 🌐 SkillSphere
 SkillSphere is a collaborative platform designed to facilitate skill exchange among users.
 It empowers individuals to connect, share expertise, and learn from each other in real-time, fostering a culture of continuous learning and personal growth. 🚀
 
-🔑 Key Features
+# 🔑 Key Features
 
 🎯 User-Friendly Interface
 Built with React, ensuring a smooth and responsive user experience.
@@ -23,15 +23,15 @@ Easily send and manage skill exchange requests for interactive learning.
 Integrated chat functionality powered by Socket.io for instant messaging and real-time conversations.
 
 
-⚙️ Installation Guide
+# ⚙️ Installation Guide
 
 
-📁3.1 Clone the Repository
+# 📁3.1 Clone the Repository
 git clone https://github.com/piyushabhadange09/SkillSphereApp.git
 cd SkillSphereApp
 
 
-🔧3.2 Backend Setup
+# 🔧3.2 Backend Setup
 cd backend
 npm install
 
@@ -41,7 +41,7 @@ PORT=5000
 MONGODB_URI=mongodb://localhost:27017/skillsphere
 JWT_SECRET=<Your JWT Secret Key>
 
-# Google OAuth Credentials
+#Google OAuth Credentials
 GOOGLE_CLIENT_ID=<Your Google Client ID>
 GOOGLE_CLIENT_SECRET=<Your Google Client Secret>
 GOOGLE_CALLBACK_URL=http://localhost:8000/auth/google/callback
@@ -56,7 +56,7 @@ Edit
 
 ✅ Backend server runs on: http://localhost:8000
 
-💻 3.3 Frontend Setup
+💻 #3.3 Frontend Setup
 
 1.Open a new terminal window/tab.
 
